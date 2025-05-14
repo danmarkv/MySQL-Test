@@ -1,0 +1,8 @@
+# Treat all SQL files as text and normalize line endings
+*.sql text eol=lf
+
+# Ensure consistent handling of markdown files
+*.md text
+
+# Force UTF-8 encoding for SQL scripts (optional)
+*.sql working-tree-encoding=UTF-8

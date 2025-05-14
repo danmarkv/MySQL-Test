@@ -1,0 +1,13 @@
+# Ignore MySQL Workbench backup/temp/log files
+*.bak
+*.tmp
+*.log
+*.err
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE/editor folders
+.vscode/
+.idea/
