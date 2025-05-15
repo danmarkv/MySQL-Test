@@ -1,9 +1,8 @@
 SELECT *
-FROM orders
-WHERE order_date >= '2019-01-01' 
+FROM products
+WHERE quantity_in_stock IN (49, 38, 72)
 
-/*
-SELECT *
-FROM customers
-WHERE birth_date > '1990-01-01'
-*/
+-- SELECT *
+-- FROM customers
+-- WHERE state IN ('VA', 'FL', 'GA')
+
