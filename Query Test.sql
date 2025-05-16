@@ -1,7 +1,16 @@
 SELECT *
 FROM customers
-WHERE birth_date BETWEEN '1990-01-01' AND '2000-01-01'
+WHERE phone LIKE '%9'
+-- WHERE phone LIKE '%9' -> displays all number not ending with 9
 
 -- SELECT *
 -- FROM customers
--- WHERE points BETWEEN 1000 AND 3000
+-- WHERE address LIKE '%TRAIL%' OR 
+-- 	  address LIKE '%AVENUE%'
+
+-- SELECT *
+-- FROM customers
+-- WHERE last_name LIKE 'b____y'
+
+-- % any number of characters
+-- _ single character
