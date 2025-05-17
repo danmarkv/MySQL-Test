@@ -1,8 +1,10 @@
-SELECT *
-FROM orders
-WHERE shipped_date IS NULL
+SELECT order_id, product_id, quantity, unit_price
+FROM order_items
+WHERE order_id = 2
+ORDER BY product_id
 
--- SELECT *
+-- SELECT first_name, last_name, 10 AS points
 -- FROM customers
--- WHERE phone IS NULL -- IS NOT NULL to show all customers with phone numbers
+-- ORDER BY 1, 2
+-- -- ORDER BY state, first_name
  
