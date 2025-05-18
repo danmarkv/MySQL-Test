@@ -1,16 +1,10 @@
-USE sql_inventory;
+USE sql_hr;
 
-SELECT *
-FROM sql_store.order_items oi
-JOIN products p
-	ON oi.product_id = p.product_id
-
--- prefix only when the table isn't on the database
-
--- USE sql_store;
-
--- SELECT *
--- FROM order_items oi
--- JOIN sql_inventory.products p
--- 	ON oi.product_id = p.product_id
+SELECT
+	e.employee_id,
+    e.first_name,
+    m.first_name AS manager
+FROM employees e
+JOIN employees m
+	ON e.reports_to = m.employee_id
  
