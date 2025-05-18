@@ -1,10 +1,16 @@
-SELECT order_id, p.product_id, name, quantity, o.unit_price
-FROM products p
-JOIN order_items o
-	ON p.product_id = o.product_id
+USE sql_inventory;
 
--- SELECT order_id, o.customer_id, first_name, last_name
--- FROM orders o
--- JOIN customers c
--- 	ON o.customer_id = c.customer_id
+SELECT *
+FROM sql_store.order_items oi
+JOIN products p
+	ON oi.product_id = p.product_id
+
+-- prefix only when the table isn't on the database
+
+-- USE sql_store;
+
+-- SELECT *
+-- FROM order_items oi
+-- JOIN sql_inventory.products p
+-- 	ON oi.product_id = p.product_id
  
