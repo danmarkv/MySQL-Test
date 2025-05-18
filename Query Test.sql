@@ -1,10 +1,11 @@
-SELECT *, quantity * unit_price AS total_price
-FROM order_items
-WHERE order_id = 2
-ORDER BY total_price DESC
+SELECT *
+FROM customers
+ORDER BY points DESC
+LIMIT 3
 
--- SELECT first_name, last_name, 10 AS points
+-- The order of the clauses should be SELECT, FROM, WHERE, ORDER BY, LIMIT
+
+-- SELECT *
 -- FROM customers
--- ORDER BY 1, 2
--- -- ORDER BY state, first_name
+-- LIMIT 6, 3
  
