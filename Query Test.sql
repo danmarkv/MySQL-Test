@@ -1,19 +1,46 @@
--- IMPLICIT CROSS JOIN
 SELECT
-	p.name AS products,
-    sh.name AS shipper
-FROM products p, shippers sh
-
--- EXPLICIT CROSS JOIN
+	customer_id,
+    first_name,
+    points,
+    'Bronze' AS type
+FROM customers
+WHERE points < 2000
+UNION
+SELECT
+	customer_id,
+    first_name,
+    points,
+    'Silver' AS type
+FROM customers
+WHERE points >= 2000 AND points <= 3000 -- can also use WHERE points BETWEEN 2000 AND 3000
+UNION
+SELECT
+	customer_id,
+    first_name,
+    points,
+    'Gold' AS type
+FROM customers
+WHERE points > 3000
+ORDER BY first_name
+	
 -- SELECT
--- 	p.name AS products,
---     sh.name AS shipper
--- FROM products p
--- CROSS JOIN shippers sh
+-- 	first_name
+-- FROM customers
+-- UNION
+-- SELECT
+-- 	name
+-- FROM shippers
 
 -- SELECT
--- 	c.first_name AS customer,
---     p.name AS product
--- FROM customers c -- adding (, products p) is IMPLICIT CROSS JOIN
--- CROSS JOIN products p -- EXPLICIT CROSS JOIN
--- ORDER BY c.first_name
+-- 	order_id,
+--     order_date,
+--     'Active' AS status
+-- FROM orders
+-- WHERE order_date > '2019-01-01'
+-- UNION
+-- SELECT
+-- 	order_id,
+--     order_date,
+--     'Archive' AS status
+-- FROM orders
+-- WHERE order_date < '2019-01-01'
