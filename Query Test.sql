@@ -1,28 +1,5 @@
-INSERT INTO customers (
-	first_name,
-    last_name,
-    birth_date,
-    address,
-    city,
-    state)
-VALUES (
-    'John', 
-    'Smith', 
-    '1990-01-01',
-    'address',
-    'city',
-    'CA')
-
--- can also use above
-
--- INSERT INTO customers
--- VALUES (
--- 	DEFAULT, 
---     'John', 
---     'Smith', 
---     '1990-01-01',
---     NULL,
---     'address',
---     'city',
---     'CA',
---     DEFAULT)
+INSERT INTO products (name, quantity_in_stock, unit_price)
+VALUE ('Product1', 11, 1.96),
+	  ('Product2', 12, 1.97),
+      ('Product3', 13, 1.98)
+		
