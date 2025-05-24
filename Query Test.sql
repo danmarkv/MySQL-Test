@@ -1,10 +1,32 @@
-SELECT
-	pm.name AS payment_method,
-    SUM(p.amount) AS total
-FROM payments p
-JOIN payment_methods pm
-	ON p.payment_method = pm.payment_method_id
-GROUP BY pm.name WITH ROLLUP
+USE sql_hr;
+
+SELECT *
+FROM employees
+WHERE salary > (
+	SELECT
+    AVG(salary)
+    FROM employees)
+
+-- Find products that are more
+-- expensive than Lettuce (id = 3)
+
+-- SELECT *
+-- FROM products
+-- WHERE unit_price > (
+-- 	SELECT unit_price
+--     FROM products
+--     WHERE product_id = 3
+-- )
+
+-- The ROLLUP operator
+
+-- SELECT
+-- 	pm.name AS payment_method,
+--     SUM(p.amount) AS total
+-- FROM payments p
+-- JOIN payment_methods pm
+-- 	ON p.payment_method = pm.payment_method_id
+-- GROUP BY pm.name WITH ROLLUP
 
 -- SELECT
 -- 	state,
@@ -13,6 +35,10 @@ GROUP BY pm.name WITH ROLLUP
 -- FROM invoices i
 -- JOIN clients c USING (client_id)
 -- GROUP BY state, city WITH ROLLUP
+
+
+
+-- WRITING COMPLEX QUERY
 
 
 
