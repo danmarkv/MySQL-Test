@@ -1,22 +1,42 @@
 SELECT
-	c.customer_id,
-    c.first_name,
-    c.last_name,
-    SUM(oi.quantity * oi.unit_price) AS total_sales
-FROM customers c
-JOIN orders o USING (customer_id)
-JOIN order_items oi USING (order_id)
-WHERE state = 'VA'
-GROUP BY customer_id
-HAVING total_sales > 100
+	pm.name AS payment_method,
+    SUM(p.amount) AS total
+FROM payments p
+JOIN payment_methods pm
+	ON p.payment_method = pm.payment_method_id
+GROUP BY pm.name WITH ROLLUP
 
 -- SELECT
--- 	client_id,
---     SUM(invoice_total) AS total_sales,
---     COUNT(*) AS number_of_invoices
--- FROM invoices
--- GROUP BY client_id
--- HAVING total_sales > 500 AND number_of_invoices > 5
+-- 	state,
+--     city,
+--     SUM(invoice_total) AS total_sales
+-- FROM invoices i
+-- JOIN clients c USING (client_id)
+-- GROUP BY state, city WITH ROLLUP
+
+
+
+-- The HAVING clause
+
+-- SELECT
+-- 	c.customer_id,
+--     c.first_name,
+--     c.last_name,
+--     SUM(oi.quantity * oi.unit_price) AS total_sales
+-- FROM customers c
+-- JOIN orders o USING (customer_id)
+-- JOIN order_items oi USING (order_id)
+-- WHERE state = 'VA'
+-- GROUP BY customer_id
+-- HAVING total_sales > 100
+
+-- -- SELECT
+-- -- 	client_id,
+-- --     SUM(invoice_total) AS total_sales,
+-- --     COUNT(*) AS number_of_invoices
+-- -- FROM invoices
+-- -- GROUP BY client_id
+-- -- HAVING total_sales > 500 AND number_of_invoices > 5
 
 
 
