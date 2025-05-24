@@ -1,11 +1,33 @@
-USE sql_hr;
+USE sql_invoicing;
 
 SELECT *
-FROM employees
-WHERE salary > (
-	SELECT
-    AVG(salary)
-    FROM employees)
+FROM clients
+WHERE client_id NOT IN (
+	SELECT DISTINCT client_id
+	FROM invoices
+)
+
+-- Find the products that have never been ordered
+
+-- USE sql_store;
+
+-- SELECT *
+-- FROM products
+-- WHERE product_id NOT IN (
+-- 	SELECT DISTINCT product_id
+-- 	FROM order_items
+-- )
+
+-- Subqueries
+
+-- USE sql_hr;
+
+-- SELECT *
+-- FROM employees
+-- WHERE salary > (
+-- 	SELECT
+--     AVG(salary)
+--     FROM employees)
 
 -- Find products that are more
 -- expensive than Lettuce (id = 3)
