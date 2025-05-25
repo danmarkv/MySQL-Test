@@ -1,11 +1,34 @@
-SELECT DISTINCT -- using Joins (find out which one is more readable)
-		customer_id, 
-        first_name, 
-        last_name
-FROM customers c
-JOIN orders o USING (customer_id)
-JOIN order_items oi USING (order_id)
-WHERE oi.product_id =3
+-- Select invoices larger than all invoices of client 3
+USE sql_invoicing;
+
+SELECT * 
+FROM invoices
+WHERE invoice_total > ALL (
+	SELECT invoice_total
+    FROM invoices
+    WHERE client_id = 3
+)
+
+-- SELECT *
+-- FROM invoices
+-- WHERE invoice_total > (
+-- 	SELECT MAX(invoice_total)
+-- 	FROM invoices
+-- 	WHERE client_id = 3
+-- )
+
+
+
+-- Subqueries vs Joins
+
+-- SELECT DISTINCT -- using Joins (find out which one is more readable)
+-- 		customer_id, 
+--         first_name, 
+--         last_name
+-- FROM customers c
+-- JOIN orders o USING (customer_id)
+-- JOIN order_items oi USING (order_id)
+-- WHERE oi.product_id =3
 
 -- SELECT -- using Subqueries
 -- 	* 
