@@ -1,11 +1,47 @@
-USE sql_invoicing;
+SELECT DISTINCT -- using Joins (find out which one is more readable)
+		customer_id, 
+        first_name, 
+        last_name
+FROM customers c
+JOIN orders o USING (customer_id)
+JOIN order_items oi USING (order_id)
+WHERE oi.product_id =3
 
-SELECT *
-FROM clients
-WHERE client_id NOT IN (
-	SELECT DISTINCT client_id
-	FROM invoices
-)
+-- SELECT -- using Subqueries
+-- 	* 
+-- FROM customers
+-- WHERE customer_id IN (
+-- 	SELECT o.customer_id
+--     FROM order_items oi
+--     JOIN orders o USING (order_id)
+--     WHERE product_id = 3)
+
+-- Find clients without invoices
+
+-- SELECT *
+-- FROM clients
+-- WHERE client_id NOT IN (
+-- 	SELECT DISTINCT client_id
+-- 	FROM invoices
+-- )
+
+-- this subquery can also be used above
+-- (SELECT *
+-- FROM clients
+-- LEFT JOIN invoices USING (client_id)
+-- WHERE invoice_id IS NULL)
+
+
+-- The IN Operator
+
+-- USE sql_invoicing;
+
+-- SELECT *
+-- FROM clients
+-- WHERE client_id NOT IN (
+-- 	SELECT DISTINCT client_id
+-- 	FROM invoices
+-- )
 
 -- Find the products that have never been ordered
 
@@ -17,6 +53,8 @@ WHERE client_id NOT IN (
 -- 	SELECT DISTINCT product_id
 -- 	FROM order_items
 -- )
+
+
 
 -- Subqueries
 
@@ -39,6 +77,8 @@ WHERE client_id NOT IN (
 --     FROM products
 --     WHERE product_id = 3
 -- )
+
+
 
 -- The ROLLUP operator
 
