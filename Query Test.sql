@@ -1,13 +1,43 @@
--- Select invoices larger than all invoices of client 3
+-- Select products that were sold by the unit (quantity = 1)
 USE sql_invoicing;
 
-SELECT * 
-FROM invoices
-WHERE invoice_total > ALL (
-	SELECT invoice_total
-    FROM invoices
-    WHERE client_id = 3
+-- SELECT * 
+-- FROM invoices
+-- WHERE invoice_total > ALL (
+-- 	SELECT invoice_total
+--     FROM invoices
+--     WHERE client_id = 3
+-- )
+SELECT *
+FROM clients
+WHERE client_id = ANY (
+	SELECT client_id
+	FROM invoices
+	GROUP BY client_id
+	HAVING COUNT(*) >= 2
 )
+-- IS EQUIVALENT BELOW
+-- WHERE client_id IN (
+-- 	SELECT client_id
+-- 	FROM invoices
+-- 	GROUP BY client_id
+-- 	HAVING COUNT(*) >= 2
+-- )
+
+
+
+-- The ALL Keyword
+
+-- Select invoices larger than all invoices of client 3
+-- USE sql_invoicing;
+
+-- SELECT * 
+-- FROM invoices
+-- WHERE invoice_total > ALL (
+-- 	SELECT invoice_total
+--     FROM invoices
+--     WHERE client_id = 3
+-- )
 
 -- SELECT *
 -- FROM invoices
