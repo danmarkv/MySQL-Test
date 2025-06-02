@@ -1,14 +1,32 @@
+-- Subqueries in the FROM Clause
+
+-- SELECT *
+-- FROM (
+-- 	SELECT
+-- 		client_id,
+-- 		name,
+-- 		(SELECT SUM(invoice_total)
+-- 			FROM invoices
+-- 			WHERE client_id = c.client_id) AS total_sales,
+-- 		(SELECT AVG(invoice_total) FROM invoices) AS average,
+-- 		(SELECT total_sales - average) AS difference
+-- 	FROM clients c
+-- ) AS sales_summary
+-- WHERE total_sales IS NOT NULL
+
+
+
 -- Subqueries in the SELECT Clause
 
-SELECT
-	client_id,
-    name,
-    (SELECT SUM(invoice_total)
-		FROM invoices
-		WHERE client_id = c.client_id) AS total_sales,
-	(SELECT AVG(invoice_total) FROM invoices) AS average,
-	(SELECT total_sales - average) AS difference
-	FROM clients c
+-- SELECT
+-- 	client_id,
+--     name,
+--     (SELECT SUM(invoice_total)
+-- 		FROM invoices
+-- 		WHERE client_id = c.client_id) AS total_sales,
+-- 	(SELECT AVG(invoice_total) FROM invoices) AS average,
+-- 	(SELECT total_sales - average) AS difference
+-- 	FROM clients c
 
 -- SELECT
 -- 	invoice_id,
