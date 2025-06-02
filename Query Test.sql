@@ -1,14 +1,36 @@
+-- Subqueries in the SELECT Clause
+
+SELECT
+	client_id,
+    name,
+    (SELECT SUM(invoice_total)
+		FROM invoices
+		WHERE client_id = c.client_id) AS total_sales,
+	(SELECT AVG(invoice_total) FROM invoices) AS average,
+	(SELECT total_sales - average) AS difference
+	FROM clients c
+
+-- SELECT
+-- 	invoice_id,
+--     invoice_total,
+--     (SELECT AVG(invoice_total)
+-- 		FROM invoices) AS invoice_average,
+-- 	invoice_total - (SELECT invoice_average) AS difference
+-- FROM invoices
+
+
+
 -- The EXISTS Operator
 
 -- Find the products that have never been ordered
-USE sql_store;
-SELECT *
-FROM products p
-WHERE NOT EXISTS (
-	SELECT product_id
-    FROM order_items
-    WHERE product_id = p.product_id
-)
+-- USE sql_store;
+-- SELECT *
+-- FROM products p
+-- WHERE NOT EXISTS (
+-- 	SELECT product_id
+--     FROM order_items
+--     WHERE product_id = p.product_id
+-- )
 -- WHERE product_id NOT IN (
 -- 	SELECT product_id
 --     FROM order_items
