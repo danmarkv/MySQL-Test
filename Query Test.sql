@@ -1,14 +1,46 @@
+-- The EXISTS Operator
+
+-- Find the products that have never been ordered
+USE sql_store;
+SELECT *
+FROM products p
+WHERE NOT EXISTS (
+	SELECT product_id
+    FROM order_items
+    WHERE product_id = p.product_id
+)
+-- WHERE product_id NOT IN (
+-- 	SELECT product_id
+--     FROM order_items
+-- )
+
+-- Select clients that have an invoice
+-- SELECT *
+-- FROM clients c
+-- WHERE EXISTS (
+-- 	SELECT client_id
+--     FROM invoices
+--     WHERE client_id = c.client_id
+-- )
+-- WHERE client_id IN ( -- the WHERE IN way
+-- 	SELECT client_id
+--     FROM invoices
+-- )
+-- JOIN invoices i USING (client_id) -- the JOIN way
+
+
+
 -- Correlated Subqueries
 
 -- Get invoices that are larger than the client's average invoice amount
-USE sql_invoicing;
-SELECT *
-FROM invoices i
-WHERE invoice_total > (
-	SELECT AVG(invoice_total)
-    FROM invoices
-    WHERE client_id = i.client_id
-)
+-- USE sql_invoicing;
+-- SELECT *
+-- FROM invoices i
+-- WHERE invoice_total > (
+-- 	SELECT AVG(invoice_total)
+--     FROM invoices
+--     WHERE client_id = i.client_id
+-- )
 
 -- Select employees whose salary is above the average in their office
 -- Psuedo code:
