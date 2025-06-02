@@ -1,5 +1,34 @@
--- Select products that were sold by the unit (quantity = 1)
+-- Correlated Subqueries
+
+-- Get invoices that are larger than the client's average invoice amount
 USE sql_invoicing;
+SELECT *
+FROM invoices i
+WHERE invoice_total > (
+	SELECT AVG(invoice_total)
+    FROM invoices
+    WHERE client_id = i.client_id
+)
+
+-- Select employees whose salary is above the average in their office
+-- Psuedo code:
+-- for each employee; calculate the avg salary for employee.office; return the employee if salary > avg
+-- USE sql_hr;
+-- SELECT *
+-- FROM employees e
+-- WHERE salary > (
+-- 	SELECT
+-- 		AVG(salary)
+-- 	FROM employees
+--     WHERE office_id = e.office_id
+-- )
+
+
+
+-- The ANY or SOME Keyword
+
+-- Select products that were sold by the unit (quantity = 1)
+-- USE sql_invoicing;
 
 -- SELECT * 
 -- FROM invoices
@@ -8,14 +37,15 @@ USE sql_invoicing;
 --     FROM invoices
 --     WHERE client_id = 3
 -- )
-SELECT *
-FROM clients
-WHERE client_id = ANY (
-	SELECT client_id
-	FROM invoices
-	GROUP BY client_id
-	HAVING COUNT(*) >= 2
-)
+
+-- SELECT *
+-- FROM clients
+-- WHERE client_id = ANY (
+-- 	SELECT client_id
+-- 	FROM invoices
+-- 	GROUP BY client_id
+-- 	HAVING COUNT(*) >= 2
+-- )
 -- IS EQUIVALENT BELOW
 -- WHERE client_id IN (
 -- 	SELECT client_id
