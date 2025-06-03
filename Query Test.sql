@@ -1,3 +1,17 @@
+-- String Functions
+
+-- SELECT LENGTH('sky') -- returns the length of string
+-- UPPER() returns the uppercase
+-- LOWER() returns the lowercase
+-- SELECT LTRIM('    Sky') -- clears the spaces on the left side RTRIM for the opposite side; TRIM() for the all sides
+-- SELECT LEFT('Kindergarten', 6) -- returns all characters from the left up to the given number, RIGHT() for all chars from the right
+-- SELECT SUBSTRING('Kindergarten', 3, 5) -- nderg returns all characters from char 3 and 5 chars afterwards
+-- SELECT LOCATE('n', 'Kindergarten') -- 3 returns the placement of the n which is 3; LOCATE('garten') returns 7
+-- SELECT REPLACE('Kindergarten', 'garten', 'garden') -- Kindergarden
+SELECT CONCAT('first', 'last') -- firstlast
+
+
+
 -- Numeric Functions
 
 -- SELECT ROUND(5.7355, 2) -- 5.74 rounds up the number and keeps only 2 numbers because of the given
@@ -5,10 +19,10 @@
 -- SELECT CEILING(6.2) -- 7 returns the smallest integer that is greater than or equal to the given
 -- SELECT FLOOR(6.2) -- 6 returns the largest integer that is less than or equal to the given
 -- SELECT ABS(5.2) -- gives the absolute number
-SELECT RAND() -- gives a random number between 0 and 1
+-- SELECT RAND() -- gives a random number between 0 and 1
 
 
-
+-- -------------------------------------------------------------------------------------------------------------------
 
 
 -- Subqueries in the FROM Clause
