@@ -1,3 +1,16 @@
+-- Numeric Functions
+
+-- SELECT ROUND(5.7355, 2) -- 5.74 rounds up the number and keeps only 2 numbers because of the given
+-- SELECT TRUNCATE(5.7345, 2) -- 5.73 removes the remaining numbers and keeps only 2 numbers after the decimal place
+-- SELECT CEILING(6.2) -- 7 returns the smallest integer that is greater than or equal to the given
+-- SELECT FLOOR(6.2) -- 6 returns the largest integer that is less than or equal to the given
+-- SELECT ABS(5.2) -- gives the absolute number
+SELECT RAND() -- gives a random number between 0 and 1
+
+
+
+
+
 -- Subqueries in the FROM Clause
 
 -- SELECT *
