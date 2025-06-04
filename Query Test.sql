@@ -1,12 +1,19 @@
+-- Formatting Dates and Times
+
+-- SELECT DATE_FORMAT(NOW(), '%M %D %Y') -- '2019-03-23' search for "mysql date format string"
+SELECT TIME_FORMAT(NOW(), '%H:%i %p')
+
+
+
 -- Date Functions 
 
 -- SELECT NOW(), CURDATE(), CURTIME()
 -- SELECT YEAR(NOW()) -- MONTH/DAY/HOUR/MINUTE/SECOND() returns int
 -- SELECT MONTHNAME(NOW()) -- DAYNAME() returns string
 -- SELECT EXTRACT(YEAR FROM NOW())
-SELECT *
-FROM orders
-WHERE YEAR(order_date) <= YEAR(NOW())
+-- SELECT *
+-- FROM orders
+-- WHERE YEAR(order_date) <= YEAR(NOW())
 
 
 
