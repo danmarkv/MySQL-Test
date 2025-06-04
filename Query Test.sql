@@ -1,3 +1,15 @@
+-- Date Functions 
+
+-- SELECT NOW(), CURDATE(), CURTIME()
+-- SELECT YEAR(NOW()) -- MONTH/DAY/HOUR/MINUTE/SECOND() returns int
+-- SELECT MONTHNAME(NOW()) -- DAYNAME() returns string
+-- SELECT EXTRACT(YEAR FROM NOW())
+SELECT *
+FROM orders
+WHERE YEAR(order_date) <= YEAR(NOW())
+
+
+
 -- String Functions
 
 -- SELECT LENGTH('sky') -- returns the length of string
@@ -8,7 +20,7 @@
 -- SELECT SUBSTRING('Kindergarten', 3, 5) -- nderg returns all characters from char 3 and 5 chars afterwards
 -- SELECT LOCATE('n', 'Kindergarten') -- 3 returns the placement of the n which is 3; LOCATE('garten') returns 7
 -- SELECT REPLACE('Kindergarten', 'garten', 'garden') -- Kindergarden
-SELECT CONCAT('first', 'last') -- firstlast
+-- SELECT CONCAT('first', 'last') -- firstlast
 
 
 
