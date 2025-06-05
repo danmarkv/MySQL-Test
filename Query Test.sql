@@ -1,7 +1,16 @@
+-- Calculating Dates and Times
+
+-- SELECT DATE_ADD(NOW(), INTERVAL 1 YEAR) -- (NOW(), INTERVAL 1 DAY/YEAR)
+-- SELECT DATE_SUB(NOW(), INTERVAL 1 DAY) -- or DATE_ADD(NOW(), INTERVAL -1 DAY)
+-- SELECT DATEDIFF('2019-01-05', '2019-01-01') -- 4 returns the day
+SELECT TIME_TO_SEC('09:00') - TIME_TO_SEC('09:02')
+
+
+
 -- Formatting Dates and Times
 
 -- SELECT DATE_FORMAT(NOW(), '%M %D %Y') -- '2019-03-23' search for "mysql date format string"
-SELECT TIME_FORMAT(NOW(), '%H:%i %p')
+-- SELECT TIME_FORMAT(NOW(), '%H:%i %p')
 
 
 
