@@ -1,9 +1,26 @@
+-- IFNULL and COALESCE Functions
+
+USE sql_store;
+
+SELECT 
+	CONCAT(first_name, ' ', last_name) AS customer,
+    IFNULL(phone, 'Unknown') AS phone -- or COALESCE(phone, 'Unknown')
+FROM customers
+
+-- SELECT 
+-- 	order_id,
+--     COALESCE(shipper_id, comments, 'Not assigned') AS shipper -- returns the first non-null value in the list e.g. shipper_id and commentsclients
+--     -- IFNULL(shipper_id, 'Not assigned') AS shipper
+-- FROM orders
+
+
+
 -- Calculating Dates and Times
 
 -- SELECT DATE_ADD(NOW(), INTERVAL 1 YEAR) -- (NOW(), INTERVAL 1 DAY/YEAR)
 -- SELECT DATE_SUB(NOW(), INTERVAL 1 DAY) -- or DATE_ADD(NOW(), INTERVAL -1 DAY)
 -- SELECT DATEDIFF('2019-01-05', '2019-01-01') -- 4 returns the day
-SELECT TIME_TO_SEC('09:00') - TIME_TO_SEC('09:02')
+-- SELECT TIME_TO_SEC('09:00') - TIME_TO_SEC('09:02')
 
 
 
