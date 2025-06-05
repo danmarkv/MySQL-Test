@@ -1,11 +1,30 @@
+-- IF Function
+
+SELECT
+	product_id,
+    name,
+    COUNT(*) AS orders,
+    IF(COUNT(*) > 1, 'Many times', 'Once') AS frequency
+FROM products
+JOIN order_items USING (product_id)
+GROUP BY product_id
+
+-- SELECT
+-- 	order_id,
+--     order_date,
+--     IF(YEAR(order_date) = YEAR('2019-01-01'), 'Active', 'Archive') AS category
+-- FROM orders
+
+
+
 -- IFNULL and COALESCE Functions
 
-USE sql_store;
+-- USE sql_store;
 
-SELECT 
-	CONCAT(first_name, ' ', last_name) AS customer,
-    IFNULL(phone, 'Unknown') AS phone -- or COALESCE(phone, 'Unknown')
-FROM customers
+-- SELECT 
+-- 	CONCAT(first_name, ' ', last_name) AS customer,
+--     IFNULL(phone, 'Unknown') AS phone -- or COALESCE(phone, 'Unknown')
+-- FROM customers
 
 -- SELECT 
 -- 	order_id,
