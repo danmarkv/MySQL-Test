@@ -1,13 +1,38 @@
--- IF Function
+-- CASE Operator
 
 SELECT
-	product_id,
-    name,
-    COUNT(*) AS orders,
-    IF(COUNT(*) > 1, 'Many times', 'Once') AS frequency
-FROM products
-JOIN order_items USING (product_id)
-GROUP BY product_id
+	CONCAT(first_name, ' ', last_name) AS customer,
+    points,
+    CASE
+		WHEN points > 3000 THEN 'Gold'
+        WHEN points >= 2000 THEN 'Silver'
+        ELSE 'Bronze'
+	END AS category
+FROM customers
+
+-- SELECT
+-- 	order_id,
+--     order_date,
+--     CASE
+-- 		WHEN YEAR(order_date) = YEAR('2019-01-01') THEN 'Active'
+--         WHEN YEAR(order_date) = YEAR('2019-01-01') - 1 THEN 'Last Year'
+--         WHEN YEAR(order_date) < YEAR('2019-01-01') - 1 THEN 'Archived'
+--         ELSE 'Future'
+-- 	END AS category
+-- FROM orders
+
+
+
+-- IF Function
+
+-- SELECT
+-- 	product_id,
+--     name,
+--     COUNT(*) AS orders,
+--     IF(COUNT(*) > 1, 'Many times', 'Once') AS frequency
+-- FROM products
+-- JOIN order_items USING (product_id)
+-- GROUP BY product_id
 
 -- SELECT
 -- 	order_id,
