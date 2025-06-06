@@ -1,14 +1,44 @@
+-- Creating Views
+
+USE sql_invoicing;
+
+CREATE VIEW clients_balance AS 
+SELECT
+	c.client_id,
+    c.name,
+    SUM(i.invoice_total - i.payment_total) AS balance
+FROM clients c
+JOIN invoices i USING (client_id)
+GROUP BY c.client_id, name
+
+-- SELECT *
+-- FROM sales_by_client
+-- JOIN clients USING (client_id)
+
+-- CREATE VIEW sales_by_client AS 
+-- SELECT
+-- 	c.client_id,
+--     c.name,
+--     SUM(invoice_total) AS total_sales
+-- FROM clients c
+-- JOIN invoices i USING (client_id)
+-- GROUP BY client_id, name
+
+
+-- -------------------------------------------------------------------------------------------------------------------
+
+
 -- CASE Operator
 
-SELECT
-	CONCAT(first_name, ' ', last_name) AS customer,
-    points,
-    CASE
-		WHEN points > 3000 THEN 'Gold'
-        WHEN points >= 2000 THEN 'Silver'
-        ELSE 'Bronze'
-	END AS category
-FROM customers
+-- SELECT
+-- 	CONCAT(first_name, ' ', last_name) AS customer,
+--     points,
+--     CASE
+-- 		WHEN points > 3000 THEN 'Gold'
+--         WHEN points >= 2000 THEN 'Silver'
+--         ELSE 'Bronze'
+-- 	END AS category
+-- FROM customers
 
 -- SELECT
 -- 	order_id,
