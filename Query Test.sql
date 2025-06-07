@@ -1,15 +1,30 @@
--- Creating Views
+-- Dropping Views
 
-USE sql_invoicing;
-
-CREATE VIEW clients_balance AS 
+CREATE OR REPLACE VIEW sales_by_client AS -- save Views in SQL files and put them on source control as a best practice
 SELECT
 	c.client_id,
     c.name,
-    SUM(i.invoice_total - i.payment_total) AS balance
+    SUM(invoice_total) AS total_sales
 FROM clients c
 JOIN invoices i USING (client_id)
-GROUP BY c.client_id, name
+GROUP BY client_id, name
+
+-- DROP VIEW sales_by_client
+
+
+
+-- Creating Views
+
+-- USE sql_invoicing;
+
+-- CREATE VIEW clients_balance AS 
+-- SELECT
+-- 	c.client_id,
+--     c.name,
+--     SUM(i.invoice_total - i.payment_total) AS balance
+-- FROM clients c
+-- JOIN invoices i USING (client_id)
+-- GROUP BY c.client_id, name
 
 -- SELECT *
 -- FROM sales_by_client
