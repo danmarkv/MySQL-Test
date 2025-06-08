@@ -1,13 +1,24 @@
--- Creating a Stored Procedure
+DROP PROCEDURE IF EXISTS get_clients -- it's good practice to move stored procedures to separate files
 
 DELIMITER $$
-CREATE PROCEDURE get_invoices_with_balance()
+CREATE PROCEDURE get_clients()
 BEGIN
-	SELECT *
-    FROM invoices_with_balance
-    WHERE balance > 0;
+	SELECT * FROM clients;
 END$$
 DELIMITER ;
+
+
+
+-- Creating a Stored Procedure
+
+-- DELIMITER $$
+-- CREATE PROCEDURE get_invoices_with_balance()
+-- BEGIN
+-- 	SELECT *
+--     FROM invoices_with_balance
+--     WHERE balance > 0;
+-- END$$
+-- DELIMITER ;
 
 -- CALL get_clients() -- calling the stored procedure
 
