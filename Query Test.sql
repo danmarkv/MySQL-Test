@@ -1,13 +1,44 @@
+-- Updatable Views
+
+UPDATE invoices_with_balance
+SET due_date = DATE_ADD(due_date, INTERVAL 2 DAY)
+WHERE invoice_id = 2
+
+-- DELETE FROM invoices_with_balance -- we can delete a row in the view from here
+-- WHERE invoice_id = 1
+
+-- CREATE OR REPLACE VIEW invoices_with_balance AS 
+-- SELECT
+-- 	invoice_id,
+--     number,
+--     client_id,
+--     invoice_total,
+--     payment_total,
+--     invoice_total - payment_total AS balance,
+--     invoice_date,
+--     due_date,
+--     payment_date
+-- FROM invoices
+-- WHERE (invoice_total - payment_total) > 0
+
+-- if the view doesn't have any of the list below, that view is an UPDATABLE VIEW:
+-- DISTINCT
+-- Aggregate Functions
+-- GROUP BY / HAVING
+-- UNION
+
+
+
 -- Dropping Views
 
-CREATE OR REPLACE VIEW sales_by_client AS -- save Views in SQL files and put them on source control as a best practice
-SELECT
-	c.client_id,
-    c.name,
-    SUM(invoice_total) AS total_sales
-FROM clients c
-JOIN invoices i USING (client_id)
-GROUP BY client_id, name
+-- CREATE OR REPLACE VIEW sales_by_client AS -- save Views in SQL files and put them on source control as a best practice
+-- SELECT
+-- 	c.client_id,
+--     c.name,
+--     SUM(invoice_total) AS total_sales
+-- FROM clients c
+-- JOIN invoices i USING (client_id)
+-- GROUP BY client_id, name
 
 -- DROP VIEW sales_by_client
 
