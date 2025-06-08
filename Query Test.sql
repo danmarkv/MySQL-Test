@@ -1,3 +1,28 @@
+-- Creating a Stored Procedure
+
+DELIMITER $$
+CREATE PROCEDURE get_invoices_with_balance()
+BEGIN
+	SELECT *
+    FROM invoices_with_balance
+    WHERE balance > 0;
+END$$
+DELIMITER ;
+
+-- CALL get_clients() -- calling the stored procedure
+
+-- DELIMITER $$ -- use DELIMITER to get rid of the errors
+-- CREATE PROCEDURE get_clients()
+-- BEGIN
+-- 	SELECT * FROM clients;
+-- END$$
+
+-- DELIMITER ;
+
+
+-- -------------------------------------------------------------------------------------------------------------------
+
+
 -- The other benefits of Views
 
 -- VIEWS help:
