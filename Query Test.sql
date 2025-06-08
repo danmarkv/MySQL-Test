@@ -1,8 +1,33 @@
+-- The WITH CHECK OPTION Clause
+
+UPDATE invoices_with_balance -- creates an error
+SET payment_total = invoice_total
+WHERE invoice_id = 3
+
+-- CREATE OR REPLACE VIEW invoices_with_balance AS -- added WITH CHECK OPTION, which prevents you from modifying rows in such ways that it won't be displayed/it will be deleted from the view.
+-- SELECT
+-- 	invoice_id,
+--     number,
+--     client_id,
+--     invoice_total,
+--     payment_total,
+--     invoice_total - payment_total AS balance,
+--     invoice_date,
+--     due_date,
+--     payment_date
+-- FROM invoices
+-- WHERE (invoice_total - payment_total) > 0
+-- WITH CHECK OPTION
+
+-- UPDATE invoices_with_balance
+-- SET payment_total = invoice_total
+-- WHERE invoice_id = 2
+
 -- Updatable Views
 
-UPDATE invoices_with_balance
-SET due_date = DATE_ADD(due_date, INTERVAL 2 DAY)
-WHERE invoice_id = 2
+-- UPDATE invoices_with_balance
+-- SET due_date = DATE_ADD(due_date, INTERVAL 2 DAY)
+-- WHERE invoice_id = 2
 
 -- DELETE FROM invoices_with_balance -- we can delete a row in the view from here
 -- WHERE invoice_id = 1
