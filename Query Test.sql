@@ -1,8 +1,18 @@
+-- The other benefits of Views
+
+-- VIEWS help:
+-- simplify queries
+-- reduce the impact of changes
+-- restrict access to the data
+-- BE AWARE OF THESE BUT DON'T BLINDLY APPLY TO EVERY SITUATION
+
+
+
 -- The WITH CHECK OPTION Clause
 
-UPDATE invoices_with_balance -- creates an error
-SET payment_total = invoice_total
-WHERE invoice_id = 3
+-- UPDATE invoices_with_balance -- creates an error
+-- SET payment_total = invoice_total
+-- WHERE invoice_id = 3
 
 -- CREATE OR REPLACE VIEW invoices_with_balance AS -- added WITH CHECK OPTION, which prevents you from modifying rows in such ways that it won't be displayed/it will be deleted from the view.
 -- SELECT
