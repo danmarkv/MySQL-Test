@@ -1,11 +1,43 @@
-DROP PROCEDURE IF EXISTS get_clients -- it's good practice to move stored procedures to separate files
+-- Using Paramters in the Stored Procedures
+
+DROP PROCEDURE IF EXISTS get_invoices_by_client
 
 DELIMITER $$
-CREATE PROCEDURE get_clients()
+CREATE PROCEDURE get_invoices_by_client
+(
+	client_id INT
+)
 BEGIN
-	SELECT * FROM clients;
+	SELECT * FROM invoices i
+    WHERE i.client_id = client_id;
 END$$
 DELIMITER ;
+
+-- DROP PROCEDURE IF EXISTS get_clients_by_state -- it's good practice to move stored procedures to separate files
+
+-- DELIMITER $$
+-- CREATE PROCEDURE get_clients_by_state
+-- (
+-- 	state CHAR(2)
+-- )
+-- BEGIN
+-- 	SELECT * FROM clients c
+--     WHERE c.state = state;
+-- END$$
+-- DELIMITER ;
+
+
+
+-- Dropping Stored Procedures
+
+-- DROP PROCEDURE IF EXISTS get_clients -- it's good practice to move stored procedures to separate files
+
+-- DELIMITER $$
+-- CREATE PROCEDURE get_clients()
+-- BEGIN
+-- 	SELECT * FROM clients;
+-- END$$
+-- DELIMITER ;
 
 
 
