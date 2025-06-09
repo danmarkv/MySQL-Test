@@ -1,22 +1,70 @@
--- **Using Parameters with default values**
+-- Output Parameters
 
-DROP PROCEDURE IF EXISTS get_payments;
+DROP PROCEDURE IF EXISTS get_unpaid_invoices_for_client; 
 
 DELIMITER $$
-CREATE PROCEDURE get_payments
+CREATE PROCEDURE get_unpaid_invoices_for_client
 (
 	client_id INT,
-    payment_method_id TINYINT
+    OUT invoices_count INT, -- avoid using these unless absolutely necessary
+    OUT invoices_total DECIMAL(9, 2)
 )
 BEGIN
-
-	SELECT * FROM payments p
-    WHERE p.client_id = IFNULL(client_id, p.client_id) AND
-    p.payment_method = IFNULL(payment_method_id, p.payment_method);
-    
-
+	SELECT COUNT(*), SUM(invoice_total)
+    INTO invoices_count, invoices_total
+    FROM invoices i
+    WHERE i.client_id = client_id AND
+		payment_total = 0;
 END$$
 DELIMITER ;
+
+
+
+-- **Parameter Validation**
+
+-- DROP PROCEDURE IF EXISTS make_payment;
+
+-- DELIMITER $$
+-- CREATE PROCEDURE get_payments
+-- (
+-- 	invoice_id INT,
+--     payment_amount DECIMAL(9, 2),
+--     payment_date DATE
+-- )
+-- BEGIN
+-- 	IF payment_amount <= 0 THEN
+-- 		SIGNAL SQLSTATE '22003' SET MESSAGE_TEXT = 'Invalid payment amount.';
+-- 	END IF;
+--     
+-- 	UPDATE invoices i
+--     SET
+-- 		i.payment_total = payment_amount,
+--         i.payment_date = payment_date
+-- 	WHERE i.invoice_id = invoice_id;
+-- END$$
+-- DELIMITER ;
+
+
+
+-- **Using Parameters with default values**
+
+-- DROP PROCEDURE IF EXISTS get_payments;
+
+-- DELIMITER $$
+-- CREATE PROCEDURE get_payments
+-- (
+-- 	client_id INT,
+--     payment_method_id TINYINT
+-- )
+-- BEGIN
+
+-- 	SELECT * FROM payments p
+--     WHERE p.client_id = IFNULL(client_id, p.client_id) AND
+--     p.payment_method = IFNULL(payment_method_id, p.payment_method);
+--     
+
+-- END$$
+-- DELIMITER ;
 
 -- DROP PROCEDURE IF EXISTS get_clients_by_state;
 
