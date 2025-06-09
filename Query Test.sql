@@ -1,22 +1,50 @@
--- Output Parameters
+-- **Using Local Variables**
 
-DROP PROCEDURE IF EXISTS get_unpaid_invoices_for_client; 
+-- Local variable. as soon as the stored procedure is finished, it is freed up
+DROP PROCEDURE IF EXISTS get_risk_factor; 
 
 DELIMITER $$
-CREATE PROCEDURE get_unpaid_invoices_for_client
-(
-	client_id INT,
-    OUT invoices_count INT, -- avoid using these unless absolutely necessary
-    OUT invoices_total DECIMAL(9, 2)
-)
+CREATE PROCEDURE get_risk_factor()
 BEGIN
+-- risk_factor = invoices_total / invoices_count * 5
+	DECLARE risk_factor DECIMAL(9,2) DEFAULT 0;
+    DECLARE invoices_total DECIMAL(9,2);
+    DECLARE invoices_count INT;
+
 	SELECT COUNT(*), SUM(invoice_total)
     INTO invoices_count, invoices_total
-    FROM invoices i
-    WHERE i.client_id = client_id AND
-		payment_total = 0;
+    FROM invoices i;
+    
+    SET risk_factor = invoices_total / invoices_count * 5;
+    
+    SELECT risk_factor;
 END$$
 DELIMITER ;
+
+-- User or session variables. these will be in memory during the entire client's session. only when the client disconnects will it be freed up
+SET @invoices_count = 0; -- defining a variable, prefix them with an @
+
+
+
+-- **Output Parameters**
+
+-- DROP PROCEDURE IF EXISTS get_unpaid_invoices_for_client; 
+
+-- DELIMITER $$
+-- CREATE PROCEDURE get_unpaid_invoices_for_client
+-- (
+-- 	client_id INT,
+--     OUT invoices_count INT, -- avoid using these unless absolutely necessary
+--     OUT invoices_total DECIMAL(9, 2)
+-- )
+-- BEGIN
+-- 	SELECT COUNT(*), SUM(invoice_total)
+--     INTO invoices_count, invoices_total
+--     FROM invoices i
+--     WHERE i.client_id = client_id AND
+-- 		payment_total = 0;
+-- END$$
+-- DELIMITER ;
 
 
 
