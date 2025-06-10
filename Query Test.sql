@@ -1,28 +1,40 @@
+-- Using Functions
+
+DROP FUNCTION IF EXISTS get_risk_factor_for_client;
+
+SELECT
+	client_id,
+    name,
+    get_risk_factor_for_client(client_id) AS risk_factor -- put Functions in source control
+FROM clients
+
+
+
 -- **Using Local Variables**
 
 -- Local variable. as soon as the stored procedure is finished, it is freed up
-DROP PROCEDURE IF EXISTS get_risk_factor; 
+-- DROP PROCEDURE IF EXISTS get_risk_factor; 
 
-DELIMITER $$
-CREATE PROCEDURE get_risk_factor()
-BEGIN
--- risk_factor = invoices_total / invoices_count * 5
-	DECLARE risk_factor DECIMAL(9,2) DEFAULT 0;
-    DECLARE invoices_total DECIMAL(9,2);
-    DECLARE invoices_count INT;
+-- DELIMITER $$
+-- CREATE PROCEDURE get_risk_factor()
+-- BEGIN
+-- -- risk_factor = invoices_total / invoices_count * 5
+-- 	DECLARE risk_factor DECIMAL(9,2) DEFAULT 0;
+--     DECLARE invoices_total DECIMAL(9,2);
+--     DECLARE invoices_count INT;
 
-	SELECT COUNT(*), SUM(invoice_total)
-    INTO invoices_count, invoices_total
-    FROM invoices i;
-    
-    SET risk_factor = invoices_total / invoices_count * 5;
-    
-    SELECT risk_factor;
-END$$
-DELIMITER ;
+-- 	SELECT COUNT(*), SUM(invoice_total)
+--     INTO invoices_count, invoices_total
+--     FROM invoices i;
+--     
+--     SET risk_factor = invoices_total / invoices_count * 5;
+--     
+--     SELECT risk_factor;
+-- END$$
+-- DELIMITER ;
 
 -- User or session variables. these will be in memory during the entire client's session. only when the client disconnects will it be freed up
-SET @invoices_count = 0; -- defining a variable, prefix them with an @
+-- SET @invoices_count = 0; -- defining a variable, prefix them with an @
 
 
 
