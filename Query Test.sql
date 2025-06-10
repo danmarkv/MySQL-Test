@@ -1,12 +1,20 @@
+-- Other Conventions
+
+-- Stick to the convetions based on your company
+-- procGetRiskFactor, getRiskFactor, get_risk_factor
+-- DELIMITER $$ or //
+
+
+
 -- Using Functions
 
-DROP FUNCTION IF EXISTS get_risk_factor_for_client;
+-- DROP FUNCTION IF EXISTS get_risk_factor_for_client;
 
-SELECT
-	client_id,
-    name,
-    get_risk_factor_for_client(client_id) AS risk_factor -- put Functions in source control
-FROM clients
+-- SELECT
+-- 	client_id,
+--     name,
+--     get_risk_factor_for_client(client_id) AS risk_factor -- put Functions in source control
+-- FROM clients
 
 
 
