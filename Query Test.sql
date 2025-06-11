@@ -1,10 +1,29 @@
+-- Creating Events
+
+DELIMITER $$
+
+CREATE EVENT yearly_delete_stale_audit_rows
+ON SCHEDULE
+-- 	AT '2019-05-01' -- for executing only once
+	EVERY 1 YEAR STARTS '2019-01-01' ENDS '2019-01-01'
+DO BEGIN
+	DELETE FROM payments_audit
+    WHERE action_date < NOW() - INTERVAL 1 YEAR; -- deletes all audits that are older than 1 year
+END $$
+DELIMITER ;
+
+-- SHOW VARIABLES LIKE 'event%';
+-- An EVENT is a task, or block of SQL code, that gets executed according to a schedule.
+
+
+
 -- Using Triggers for Auditing
 
-DELETE FROM payments
-WHERE payment_id = 11;
+-- DELETE FROM payments
+-- WHERE payment_id = 11;
 
-INSERT INTO payments
-VALUES (DEFAULT, 5, 3, '2019-01-01', 10, 1)
+-- INSERT INTO payments
+-- VALUES (DEFAULT, 5, 3, '2019-01-01', 10, 1)
 
 -- DELIMITER $$
 
