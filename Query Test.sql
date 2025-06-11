@@ -1,8 +1,8 @@
--- Creating Triggers
+-- Viewing/Dropping Triggers
 
--- Viewing Triggers
+DROP TRIGGER IF EXISTS payments_after_insert; -- put in source control
 
-SHOW TRIGGERS LIKE 'payments%' -- follow the convention to filter triggers easier. (table name)_(before/after)_(action)
+-- SHOW TRIGGERS LIKE 'payments%' -- follow the convention to filter triggers easier. (table name)_(before/after)_(action)
 -- SHOW TRIGGERS -- to show all triggers created
 
 -- Creating Triggers
