@@ -1,16 +1,24 @@
+-- View/drop/alter Events
+
+SHOW EVENTS; -- viewing
+DROP EVENT IF EXISTS yearly_delete_stale_audit_rows; -- dropping
+ALTER EVENT yearly_delete_stale_audit_rows DISABLE; -- altering DISABLE/ENABLE
+
+
+
 -- Creating Events
 
-DELIMITER $$
+-- DELIMITER $$
 
-CREATE EVENT yearly_delete_stale_audit_rows
-ON SCHEDULE
--- 	AT '2019-05-01' -- for executing only once
-	EVERY 1 YEAR STARTS '2019-01-01' ENDS '2019-01-01'
-DO BEGIN
-	DELETE FROM payments_audit
-    WHERE action_date < NOW() - INTERVAL 1 YEAR; -- deletes all audits that are older than 1 year
-END $$
-DELIMITER ;
+-- CREATE EVENT yearly_delete_stale_audit_rows
+-- ON SCHEDULE
+-- -- 	AT '2019-05-01' -- for executing only once
+-- 	EVERY 1 YEAR STARTS '2019-01-01' ENDS '2029-01-01'
+-- DO BEGIN
+-- 	DELETE FROM payments_audit
+--     WHERE action_date < NOW() - INTERVAL 1 YEAR; -- deletes all audits that are older than 1 year
+-- END $$
+-- DELIMITER ;
 
 -- SHOW VARIABLES LIKE 'event%';
 -- An EVENT is a task, or block of SQL code, that gets executed according to a schedule.
