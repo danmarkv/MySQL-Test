@@ -1,22 +1,27 @@
 -- Creating Triggers
 
+-- Viewing Triggers
+
+SHOW TRIGGERS LIKE 'payments%' -- follow the convention to filter triggers easier. (table name)_(before/after)_(action)
+-- SHOW TRIGGERS -- to show all triggers created
+
 -- Creating Triggers
 
 -- Create a trigger that gets fired when we delete a payment.
 
-DELETE FROM payments
-WHERE payment_id = 10;
+-- DELETE FROM payments
+-- WHERE payment_id = 10;
 
-DELIMITER $$
-CREATE TRIGGER payments_after_delete
-	AFTER DELETE ON payments
-    FOR EACH ROW
-BEGIN
-	UPDATE invoices
-    SET payment_total = payment_total - OLD.amount
-    WHERE invoice_id = OLD.invoice_id;
-END$$
-DELIMITER ;
+-- DELIMITER $$
+-- CREATE TRIGGER payments_after_delete
+-- 	AFTER DELETE ON payments
+--     FOR EACH ROW
+-- BEGIN
+-- 	UPDATE invoices
+--     SET payment_total = payment_total - OLD.amount
+--     WHERE invoice_id = OLD.invoice_id;
+-- END$$
+-- DELIMITER ;
 
 
 -- INSERT INTO payments
