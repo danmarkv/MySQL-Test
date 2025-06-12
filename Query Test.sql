@@ -1,8 +1,27 @@
+-- Creating Transactions
+
+USE sql_store;
+
+START TRANSACTION;
+
+INSERT INTO orders (customer_id, order_date, status)
+VALUES (1, '2019-01-01', 1);
+
+INSERT INTO  order_items
+VALUES (LAST_INSERT_ID(), 1, 1, 1);
+
+ROLLBACK;
+-- COMMIT;
+
+-- A Transaction is a group of SQL statements that represent a single unit of work.
+
+
+
 -- View/drop/alter Events
 
-SHOW EVENTS; -- viewing
-DROP EVENT IF EXISTS yearly_delete_stale_audit_rows; -- dropping
-ALTER EVENT yearly_delete_stale_audit_rows DISABLE; -- altering DISABLE/ENABLE
+-- SHOW EVENTS; -- viewing
+-- DROP EVENT IF EXISTS yearly_delete_stale_audit_rows; -- dropping
+-- ALTER EVENT yearly_delete_stale_audit_rows DISABLE; -- altering DISABLE/ENABLE
 
 
 
