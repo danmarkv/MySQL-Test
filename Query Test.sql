@@ -1,10 +1,10 @@
--- REPEATABLE READ Isolation Level
+-- SERIALIZABLE Isolation Level
 
 -- First user
 USE sql_store;
-SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
 START TRANSACTION;
-SELECT * FROM customers WHERE state = 'VA'; -- this will ready only 1 customer from VA because of the Isolation Level
+SELECT * FROM customers WHERE state = 'VA'; -- it will wait until Second user has commited it's query before executing this query
 COMMIT;
 
 -- Second user
@@ -14,6 +14,25 @@ UPDATE customers
 SET state = 'VA'
 WHERE customer_id = 1;
 COMMIT; 
+
+
+
+-- REPEATABLE READ Isolation Level
+
+-- First user
+-- USE sql_store;
+-- SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+-- START TRANSACTION;
+-- SELECT * FROM customers WHERE state = 'VA'; -- this will ready only 1 customer from VA because of the Isolation Level
+-- COMMIT;
+
+-- -- Second user
+-- USE sql_store;
+-- START TRANSACTION;
+-- UPDATE customers
+-- SET state = 'VA'
+-- WHERE customer_id = 1;
+-- COMMIT; 
 
 
 
