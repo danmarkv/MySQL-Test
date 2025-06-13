@@ -1,12 +1,19 @@
+-- Transaction Isolation Levels
+
+SHOW VARIABLES LIKE 'transaction_isolation';
+SET SESSION TRANSACTION ISOLATION LEVEL SERIALIZABLE; -- SESSION: for the current session or connection, GLOBAL: for all connections and future sessions
+
+
+
 -- Concurrency and Locking
 
-USE sql_store;
+-- USE sql_store;
 
-START TRANSACTION;
-UPDATE customers
-SET points = points + 10
-WHERE customer_id = 1;
-COMMIT; 
+-- START TRANSACTION;
+-- UPDATE customers
+-- SET points = points + 10
+-- WHERE customer_id = 1;
+-- COMMIT; 
 
 
 
