@@ -1,20 +1,38 @@
--- READ UNCOMMITTED Isolation Level
-
--- This is the lowest Isolation level and will have all isolation problems
 -- First user
 USE sql_store;
-SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
-SELECT points
-FROM customers
-WHERE customer_id = 1;
+SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+START TRANSACTION;
+SELECT points FROM customers WHERE customer_id = 1;
+SELECT points FROM customers WHERE customer_id = 1;
+COMMIT;
 
 -- Second user
 USE sql_store;
 START TRANSACTION;
 UPDATE customers
-SET points = 20
+SET points = 30
 WHERE customer_id = 1;
-ROLLBACK; 
+COMMIT; 
+
+
+
+-- READ UNCOMMITTED Isolation Level
+
+-- This is the lowest Isolation level and will have all isolation problems
+-- First user
+-- USE sql_store;
+-- SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+-- SELECT points
+-- FROM customers
+-- WHERE customer_id = 1;
+
+-- -- Second user
+-- USE sql_store;
+-- START TRANSACTION;
+-- UPDATE customers
+-- SET points = 20
+-- WHERE customer_id = 1;
+-- ROLLBACK; 
 -- The commit didn't happen and user 1 still got the points = 20 because of the isolation level UNCOMMITTED
 
 
