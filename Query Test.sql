@@ -1,20 +1,50 @@
+-- Integer Types
+
+-- Integers (Use the smallest data types that suits your needs)
+-- TINYINT 1b [-128, 127] e.g. age
+-- UNSIGNED TINYINT [0, 255] prevents negative numbers 
+-- SMALLINT 2b [-32k, 32k]
+-- MEDIUMINT 3b [-8m, 8m]
+-- INT 4b [-2b, 2b]
+-- BIGINT 8b [-9z, 9z]
+
+-- Zerofill INT(4) -> 0001
+
+
+
+-- String Types
+
+-- Strings
+-- CHAR(x) - fixed length
+-- VARCHAR(x) max: 65,535 characters (~64kb) Be consistent in giving length. VARCHAR(50) for short strings, VARCHAR(255) for medium strings
+-- MEDIUMTEXT max: 16m characters (16mb)
+-- LONGTEXT max: 4gb
+-- TINYTEXT max: 255 bytes
+-- TEXT max: 64kb
+
+-- Data Types: String, Numeric, Date and Time, Blob (for storing binary data), Spatial (for storing geometry or geographical values)
+
+
+-- -------------------------------------------------------------------------------------------------------------------
+
+
 -- Understanding Deadlocks
 
 -- Ways to prevent Deadlocks: 1-Follow the same order on your transactions. 2-Keep transactions short in duration to reduce chances of collision/conflicts. 3-Schedule long transactions in non-peak hours.
 
 -- First user
-USE sql_store;
-START TRANSACTION;
-UPDATE customers SET state = 'VA' WHERE customer_id = 1;
-UPDATE orders SET status = 1 WHERE order_id = 1;
-COMMIT;
+-- USE sql_store;
+-- START TRANSACTION;
+-- UPDATE customers SET state = 'VA' WHERE customer_id = 1;
+-- UPDATE orders SET status = 1 WHERE order_id = 1;
+-- COMMIT;
 
--- -- Second user
-USE sql_store;
-START TRANSACTION;
-UPDATE orders SET status = 1 WHERE order_id = 1;
-UPDATE customers SET state = 'VA' WHERE customer_id = 1;
-COMMIT;
+-- -- -- Second user
+-- USE sql_store;
+-- START TRANSACTION;
+-- UPDATE orders SET status = 1 WHERE order_id = 1;
+-- UPDATE customers SET state = 'VA' WHERE customer_id = 1;
+-- COMMIT;
 
 
 
