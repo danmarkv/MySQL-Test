@@ -1,19 +1,39 @@
--- SERIALIZABLE Isolation Level
+-- Understanding Deadlocks
+
+-- Ways to prevent Deadlocks: 1-Follow the same order on your transactions. 2-Keep transactions short in duration to reduce chances of collision/conflicts. 3-Schedule long transactions in non-peak hours.
 
 -- First user
 USE sql_store;
-SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
 START TRANSACTION;
-SELECT * FROM customers WHERE state = 'VA'; -- it will wait until Second user has commited it's query before executing this query
+UPDATE customers SET state = 'VA' WHERE customer_id = 1;
+UPDATE orders SET status = 1 WHERE order_id = 1;
 COMMIT;
 
--- Second user
+-- -- Second user
 USE sql_store;
 START TRANSACTION;
-UPDATE customers
-SET state = 'VA'
-WHERE customer_id = 1;
-COMMIT; 
+UPDATE orders SET status = 1 WHERE order_id = 1;
+UPDATE customers SET state = 'VA' WHERE customer_id = 1;
+COMMIT;
+
+
+
+-- SERIALIZABLE Isolation Level
+
+-- First user
+-- USE sql_store;
+-- SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+-- START TRANSACTION;
+-- SELECT * FROM customers WHERE state = 'VA'; -- it will wait until Second user has commited it's query before executing this query
+-- COMMIT;
+
+-- -- Second user
+-- USE sql_store;
+-- START TRANSACTION;
+-- UPDATE customers
+-- SET state = 'VA'
+-- WHERE customer_id = 1;
+-- COMMIT; 
 
 
 
