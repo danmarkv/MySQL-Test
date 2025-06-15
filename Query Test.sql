@@ -1,3 +1,12 @@
+-- Fixed-point and Floating-point Types
+
+-- Fixed-point and Floating-point Types
+-- DECIMAL(p, s) p.s We can also use DEC/NUMERIC/FIXED
+-- FLOAT 4b
+-- DOUBLE 8b
+
+
+
 -- Integer Types
 
 -- Integers (Use the smallest data types that suits your needs)
