@@ -1,3 +1,10 @@
+-- Boolean Types
+
+-- BOOL or BOOLEAN
+-- e.g. UPDATE posts SET is_published = TRUE/1 
+
+
+
 -- Fixed-point and Floating-point Types
 
 -- Fixed-point and Floating-point Types
