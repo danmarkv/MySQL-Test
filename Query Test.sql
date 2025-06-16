@@ -1,4 +1,15 @@
+-- Blob Types
+
+-- used for large amounts of binary data
+-- TINYBLOB 255b
+-- BLOB 65KB
+-- MEDIUMBLOB 16MB
+-- LONGBLOB 4GB
+
+
+
 -- Date/Time Types
+
 -- DATE
 -- TIME
 -- DATETIME - 8b 
