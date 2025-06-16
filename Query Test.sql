@@ -1,3 +1,50 @@
+-- JSON Type
+UPDATE products
+SET properties = JSON_OBJECT('weight', 10, 'dimensions', JSON_ARRAY(1, 2, 3), 'manufacturer', JSON_OBJECT('name', 'sony'))
+-- '
+-- {
+-- 	"dimension": [1, 2, 3],
+--     "weight": 10,
+--     "manufacturer": { "name": "sony"}
+-- }
+-- '
+WHERE product_id = 1;
+
+-- for updating JSON objects
+UPDATE products
+SET properties = JSON_SET(
+	properties,
+    '$.weight', 20,
+    '$.age', 10
+)
+WHERE product_id = 1;
+
+-- for removing JSON properties
+UPDATE products
+SET properties = JSON_REMOVE(
+	properties,
+    '$.age'
+)
+WHERE product_id = 1;
+
+SELECT product_id, JSON_EXTRACT(properties, '$.weight') AS weight -- extracting data from properties
+FROM products 
+WHERE product_id = 1;
+-- or
+SELECT product_id, properties -> '$.dimensions[0]'
+FROM products 
+WHERE product_id = 1;
+-- or
+SELECT product_id, properties -> '$.manufacturer.name' -- returns "sony"
+FROM products 
+WHERE product_id = 1;
+-- or
+SELECT product_id, properties ->> '$.manufacturer.name' -- take note of ->> returns sony
+FROM products 
+WHERE properties ->> '$.manufacturer.name' = 'sony';
+
+
+
 -- Blob Types
 
 -- used for large amounts of binary data
