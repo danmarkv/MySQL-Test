@@ -1,3 +1,12 @@
+-- Date/Time Types
+-- DATE
+-- TIME
+-- DATETIME - 8b 
+-- TIMESTAMP - 4b for keeping track when a row was inserted or last updated
+-- YEAR - four digit year
+
+
+
 -- Enum and Set Types
 
 -- ENUM('small', 'medium', 'large') try to avoid using ENUMS
