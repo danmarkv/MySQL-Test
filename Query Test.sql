@@ -1,3 +1,11 @@
+-- Enum and Set Types
+
+-- ENUM('small', 'medium', 'large') try to avoid using ENUMS
+-- SET(...)
+-- try LookupTables. example is sql_invoicing.payment_methods
+
+
+
 -- Boolean Types
 
 -- BOOL or BOOLEAN
