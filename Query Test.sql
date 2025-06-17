@@ -1,4 +1,14 @@
+-- Logical Models
+
+-- Adds more details to the conceptual models
+-- Gives us what structure and what tables to store the data
+
+
+
 -- Conceptual Models
+
+-- Represents business entities and their relation ship
+-- Understands the problem domain and communicat with the domain expert
 
 
 -- -------------------------------------------------------------------------------------------------------------------
