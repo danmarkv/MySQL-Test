@@ -1,3 +1,9 @@
+-- Foreign Key Constraints
+-- On Update: CASCADE
+-- On Delete: depends on the case
+
+
+
 -- Foreign Keys
 
 
