@@ -1,3 +1,8 @@
+-- 1NF - First Normal Form 
+-- Each cell should have a single valu and we cannot have repeated columns.
+
+
+
 -- Foreign Key Constraints
 -- On Update: CASCADE
 -- On Delete: depends on the case
