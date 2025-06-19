@@ -1,3 +1,7 @@
+-- Link Tables
+
+
+
 -- 1NF - First Normal Form 
 -- Each cell should have a single valu and we cannot have repeated columns.
 
