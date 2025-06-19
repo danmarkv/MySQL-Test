@@ -1,3 +1,11 @@
+-- 2NF
+-- To qualify:
+-- 1 must be in first normal form
+-- 2 not have any non-prime attribute that is dependent on any proper subset of any candidate key of the relation
+-- Each table should describe one entity, and every column in that table should describe that entity.
+
+
+
 -- Link Tables
 
 
