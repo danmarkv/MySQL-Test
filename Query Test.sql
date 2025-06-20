@@ -1,3 +1,7 @@
+-- Flight Booking System Logical Model
+
+
+
 -- Flight Booking System Conceptual Model
 
 
