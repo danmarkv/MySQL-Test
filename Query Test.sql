@@ -1,3 +1,11 @@
+-- 3NF
+-- To qualify:
+-- 1 must be in second normal form
+-- 2 all attributes in the the table are determined only by the candidate keys of that relation and not by any non-prime attributes
+-- A column in a table should not be derived from other columns.
+
+
+
 -- 2NF
 -- To qualify:
 -- 1 must be in first normal form
@@ -11,7 +19,7 @@
 
 
 -- 1NF - First Normal Form 
--- Each cell should have a single valu and we cannot have repeated columns.
+-- Each cell should have a single value and we cannot have repeated columns.
 
 
 
