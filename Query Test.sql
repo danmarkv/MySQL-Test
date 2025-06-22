@@ -1,3 +1,7 @@
+-- Video Rental App Logical Model
+
+
+
 -- Video Rental App Conceptual Model
 
 
