@@ -1,13 +1,24 @@
+-- Character Sets and Collations
+
+-- a character set is a table that maps each character to a number
+-- SHOW CHARSET LIKE 'UTF%'
+
+-- Changing the character set at the database level:
+ALTER DATABASE db_name -- CREATE/ALTER
+	CHARACTER SET latin1;
+
+
+
 -- Altering Primary and Foreign Key Constraints
 
-ALTER TABLE orders
-	ADD PRIMARY KEY (order_id),
-    DROP PRIMARY KEY,
-	DROP FOREIGN KEY fk_orders_customers,
-    ADD FOREIGN KEY fk_orders_customers (customer_id)
-		REFERENCES customers (customer_id)
-        ON UPDATE CASCADE 
-        ON DELETE NO ACTION
+-- ALTER TABLE orders
+-- 	ADD PRIMARY KEY (order_id),
+--     DROP PRIMARY KEY,
+-- 	DROP FOREIGN KEY fk_orders_customers,
+--     ADD FOREIGN KEY fk_orders_customers (customer_id)
+-- 		REFERENCES customers (customer_id)
+--         ON UPDATE CASCADE 
+--         ON DELETE NO ACTION
 
 
 
