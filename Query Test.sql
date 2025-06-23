@@ -1,10 +1,37 @@
+-- Creating Relationships
+
+CREATE DATABASE IF NOT EXISTS sql_store2;
+USE sql_store2;
+DROP TABLE IF EXISTS orders;
+DROP TABLE IF EXISTS customers; -- this will not be executed because the CUSTOMERS table depends on the ORDERS table. we need to move the DROP TABLE IF EXISTS orders before this line of code
+
+CREATE TABLE IF NOT EXISTS customers
+(
+
+	customer_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name 	VARCHAR(50) NOT NULL,
+    points 		INT NOT NULL DEFAULT 0,
+    email 		VARCHAR(255) NOT NULL UNIQUE
+);
+CREATE TABLE orders
+(
+	order_id 	INT PRIMARY KEY,
+    customer_id INT NOT NULL,
+    FOREIGN KEY fk_orders_customers (customer_id)
+		REFERENCES customers (customer_id)
+        ON UPDATE CASCADE
+        ON DELETE NO ACTION
+);
+
+
+
 -- Altering Tables
 
-ALTER TABLE customers
-	ADD last_name VARCHAR(50) NOT NULL AFTER first_name,
-    ADD	city		VARCHAR(50) NOT NULL,
-    MODIFY COLUMN first_name VARCHAR(55) DEFAULT '',
-    DROP points;
+-- ALTER TABLE customers
+-- 	ADD last_name VARCHAR(50) NOT NULL AFTER first_name,
+--     ADD	city		VARCHAR(50) NOT NULL,
+--     MODIFY COLUMN first_name VARCHAR(55) DEFAULT '',
+--     DROP points;
 -- Remember: do not alter tables in a PRODUCTION ENVIRONMENT, always try to use TEST DATABASE to see if you alterations work AND THEN you can execute it to production database
 
 
