@@ -1,8 +1,17 @@
+-- Indexes
+-- reserve indexes for performance critical queries. don't use indexes on every column
+-- design indexes based on your queries, not the tables
+-- indexes are designed to speed up your query
+
+
+-- -------------------------------------------------------------------------------------------------------------------
+
+
 -- Storage Engines
 
 -- SHOW ENGINES;
-ALTER TABLE customers
-ENGINE = InnoDB;
+-- ALTER TABLE customers
+-- ENGINE = InnoDB;
 
 
 
