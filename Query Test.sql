@@ -1,9 +1,19 @@
+-- Viewing Indexes
+
+SHOW INDEXES IN orders; -- when creating relationship in tables, SQL automatically creates indexes
+
+-- SHOW INDEXES IN customers; -- cardinality table is an estimate. to have a more accurate value, use ANALYZE
+
+-- ANALYZE TABLE customers;
+
+
+
 -- Creating Indexes
 
 -- Write a query to find customers with more than 1000 points.
 
-EXPLAIN SELECT customer_id FROM customers WHERE points > 1000;
-CREATE INDEX idx_points ON customers (points);
+-- EXPLAIN SELECT customer_id FROM customers WHERE points > 1000;
+-- CREATE INDEX idx_points ON customers (points);
 
 -- EXPLAIN SELECT customer_id FROM customers WHERE state = 'CA';
 
