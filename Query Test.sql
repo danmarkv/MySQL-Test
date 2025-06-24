@@ -1,11 +1,19 @@
+-- Storage Engines
+
+-- SHOW ENGINES;
+ALTER TABLE customers
+ENGINE = InnoDB;
+
+
+
 -- Character Sets and Collations
 
 -- a character set is a table that maps each character to a number
 -- SHOW CHARSET LIKE 'UTF%'
 
 -- Changing the character set at the database level:
-ALTER DATABASE db_name -- CREATE/ALTER
-	CHARACTER SET latin1;
+-- ALTER DATABASE db_name -- CREATE/ALTER
+-- 	CHARACTER SET latin1;
 
 
 
