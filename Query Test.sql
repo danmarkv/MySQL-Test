@@ -1,6 +1,18 @@
+-- Prefix Indexes
+
+-- CREATE INDEX idx_lastname ON customers (last_name(20));
+
+SELECT 
+	COUNT(DISTINCT LEFT(last_name, 1)),
+    COUNT(DISTINCT LEFT(last_name, 5)),
+    COUNT(DISTINCT LEFT(last_name, 10)) 
+FROM customers;
+
+
+
 -- Viewing Indexes
 
-SHOW INDEXES IN orders; -- when creating relationship in tables, SQL automatically creates indexes
+-- SHOW INDEXES IN orders; -- when creating relationship in tables, SQL automatically creates indexes
 
 -- SHOW INDEXES IN customers; -- cardinality table is an estimate. to have a more accurate value, use ANALYZE
 
