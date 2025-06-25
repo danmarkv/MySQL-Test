@@ -1,12 +1,35 @@
+-- Full-text Indexes
+-- we use this to build and fast flexible search engines in our applications
+
+-- how to find blog posts that contains 'react redux'?
+-- full-text indexes
+-- CREATE FULLTEXT INDEX idx_title_body ON posts (title, body);
+
+SElECT *, MATCH(title, body) AGAINST('react redux') -- for calculating the relevance score
+FROM posts
+WHERE MATCH(title, body) AGAINST('"handling a form"') -- we can also use phrases
+-- WHERE MATCH(title, body) AGAINST('react -redux +form' IN BOOLEAN MODE);
+-- WHERE MATCH(title, body) AGAINST('react redux'); -- default
+-- full-text indexes has two modes, default mode (natural language mode) and boolean mode
+
+-- bad example:
+-- USE sql_blog;
+-- SELECT *
+-- FROM posts
+-- WHERE title LIKE '%react redux%' OR
+-- 		body LIKE '%react redux%';
+
+
+
 -- Prefix Indexes
 
 -- CREATE INDEX idx_lastname ON customers (last_name(20));
 
-SELECT 
-	COUNT(DISTINCT LEFT(last_name, 1)),
-    COUNT(DISTINCT LEFT(last_name, 5)),
-    COUNT(DISTINCT LEFT(last_name, 10)) 
-FROM customers;
+-- SELECT 
+-- 	COUNT(DISTINCT LEFT(last_name, 1)),
+--     COUNT(DISTINCT LEFT(last_name, 5)),
+--     COUNT(DISTINCT LEFT(last_name, 10)) 
+-- FROM customers;
 
 
 
