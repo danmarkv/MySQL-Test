@@ -1,16 +1,40 @@
+-- Order of Columns in Composite Indexes
+-- put the most frequently used columns first
+-- put the column with a higher cardinality first
+-- take queries into account (see what is the best solution rather than following the rules above because it's just a guide on how to approach indexes in columns)
+
+EXPLAIN SELECT customer_id
+FROM customers
+USE INDEX (idx_lastname_state)
+WHERE last_name LIKE 'A%'; -- idx_lastname_state this isn't the best index to use
+
+-- EXPLAIN SELECT customer_id
+-- FROM customers
+-- USE INDEX (idx_lastname_state) -- forcing SQL to use this index instead of their default
+-- WHERE state = 'NY' AND last_name LIKE 'A%'; -- this breaks the rule of cardinality but it's better as a solution to the problem of this query
+
+-- DROP INDEX idx_lastname_state ON customers;
+
+-- CREATE INDEX idx_state_lastname ON customers (state, last_name);
+-- SELECT 
+-- 	COUNT(DISTINCT state),
+--     COUNT(DISTINCT last_name)
+-- FROM customers;
+
+
+
 -- Composite Indexes
 
--- now let's drop some of the indexes
+-- let's drop some of the indexes
 -- SHOW INDEXES IN customers;
 -- DROP INDEX idx_points ON customers;
 -- -- DROP INDEX idx_state ON customers;
 
-
-USE sql_store;
-CREATE INDEX idx_state_points ON customers (state, points);
-SHOW INDEXES in customers;
-EXPLAIN SELECT customer_id FROM customers
-WHERE state = 'CA' and points > 1000;
+-- USE sql_store;
+-- CREATE INDEX idx_state_points ON customers (state, points);
+-- SHOW INDEXES in customers;
+-- EXPLAIN SELECT customer_id FROM customers
+-- WHERE state = 'CA' and points > 1000;
 
 -- SHOW INDEXES in customers;
 -- EXPLAIN SELECT customer_id FROM customers
