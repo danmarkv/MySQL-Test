@@ -1,3 +1,23 @@
+-- Composite Indexes
+
+-- now let's drop some of the indexes
+-- SHOW INDEXES IN customers;
+-- DROP INDEX idx_points ON customers;
+-- -- DROP INDEX idx_state ON customers;
+
+
+USE sql_store;
+CREATE INDEX idx_state_points ON customers (state, points);
+SHOW INDEXES in customers;
+EXPLAIN SELECT customer_id FROM customers
+WHERE state = 'CA' and points > 1000;
+
+-- SHOW INDEXES in customers;
+-- EXPLAIN SELECT customer_id FROM customers
+-- WHERE state = 'CA' and points > 1000; -- after the state index, the query does a full-table scan for points because it chooses only 1 key for the index which is idx_state
+
+
+
 -- Full-text Indexes
 -- we use this to build and fast flexible search engines in our applications
 
@@ -5,9 +25,9 @@
 -- full-text indexes
 -- CREATE FULLTEXT INDEX idx_title_body ON posts (title, body);
 
-SElECT *, MATCH(title, body) AGAINST('react redux') -- for calculating the relevance score
-FROM posts
-WHERE MATCH(title, body) AGAINST('"handling a form"') -- we can also use phrases
+-- SElECT *, MATCH(title, body) AGAINST('react redux') -- for calculating the relevance score
+-- FROM posts
+-- WHERE MATCH(title, body) AGAINST('"handling a form"') -- we can also use phrases
 -- WHERE MATCH(title, body) AGAINST('react -redux +form' IN BOOLEAN MODE);
 -- WHERE MATCH(title, body) AGAINST('react redux'); -- default
 -- full-text indexes has two modes, default mode (natural language mode) and boolean mode
