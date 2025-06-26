@@ -1,11 +1,20 @@
+-- Covering Indexes
+-- an index that covers everything that a query needs
+
+EXPLAIN SELECT customer_id, state FROM customers 
+ORDER BY state;
+SHOW STATUS LIKE 'last_query_cost';
+
+
+
 -- Using Indexes for Sorting
 -- (a, b) you can sort a, a and b, a DESC and b DESC, but not a and b DESC
 -- do not mix the directions
 
-EXPLAIN SELECT customer_id FROM customers 
-WHERE state = 'CA'
-ORDER BY points;
-SHOW STATUS LIKE 'last_query_cost';
+-- EXPLAIN SELECT customer_id FROM customers 
+-- WHERE state = 'CA'
+-- ORDER BY points;
+-- SHOW STATUS LIKE 'last_query_cost';
 
 -- EXPLAIN SELECT customer_id FROM customers 
 -- ORDER BY state DESC, points DESC;
