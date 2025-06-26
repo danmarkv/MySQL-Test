@@ -1,12 +1,29 @@
+-- When Indexes are ignored
+
+EXPLAIN SELECT customer_id FROM customers
+WHERE points + 10 > 2010; -- 1010 records scanned
+-- WHERE points > 2000; -- the same as above but only scans 3 records. ISOLATE YOUR COLUMNS
+
+-- CREATE INDEX idx_points ON customers (points);
+
+-- EXPLAIN  
+-- 	SELECT customer_id FROM customers
+-- 	WHERE state = 'CA'
+-- 	UNION
+-- 	SELECT customer_id FROM customers
+--     WHERE points > 1000; -- from 1010 records scanned, it's down to 112 for the first query and 528 for the second. a total of 640
+
+
+
 -- Order of Columns in Composite Indexes
 -- put the most frequently used columns first
 -- put the column with a higher cardinality first
 -- take queries into account (see what is the best solution rather than following the rules above because it's just a guide on how to approach indexes in columns)
 
-EXPLAIN SELECT customer_id
-FROM customers
-USE INDEX (idx_lastname_state)
-WHERE last_name LIKE 'A%'; -- idx_lastname_state this isn't the best index to use
+-- EXPLAIN SELECT customer_id
+-- FROM customers
+-- USE INDEX (idx_lastname_state)
+-- WHERE last_name LIKE 'A%'; -- idx_lastname_state this isn't the best index to use
 
 -- EXPLAIN SELECT customer_id
 -- FROM customers
