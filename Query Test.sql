@@ -1,7 +1,23 @@
+-- Using Indexes for Sorting
+-- (a, b) you can sort a, a and b, a DESC and b DESC, but not a and b DESC
+-- do not mix the directions
+
+EXPLAIN SELECT customer_id FROM customers 
+WHERE state = 'CA'
+ORDER BY points;
+SHOW STATUS LIKE 'last_query_cost';
+
+-- EXPLAIN SELECT customer_id FROM customers 
+-- ORDER BY state DESC, points DESC;
+-- SHOW STATUS LIKE 'last_query_cost';
+
+
+
 -- When Indexes are ignored
 
-EXPLAIN SELECT customer_id FROM customers
-WHERE points + 10 > 2010; -- 1010 records scanned
+-- EXPLAIN SELECT customer_id FROM customers
+-- WHERE points + 10 > 2010; -- 1010 records scanned
+
 -- WHERE points > 2000; -- the same as above but only scans 3 records. ISOLATE YOUR COLUMNS
 
 -- CREATE INDEX idx_points ON customers (points);
