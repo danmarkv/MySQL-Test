@@ -1,3 +1,9 @@
+-- Index Maintenance
+-- watch out for Duplicate Indexes and Redundant Indexes. if you see one of these, drop them
+-- before creating new indexes, check the existing ones and see if there is one you can extend
+
+
+
 -- Covering Indexes
 -- an index that covers everything that a query needs
 
