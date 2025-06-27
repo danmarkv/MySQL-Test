@@ -1,16 +1,33 @@
+-- Revoking Privileges
+REVOKE CREATE VIEW
+ON sql_store.*
+FROM moon_app;
+
+-- GRANT CREATE VIEW
+-- ON sql_store.*
+-- TO moon_app;
+
+
+
+-- Viewing Privileges
+-- SHOW GRANTS;
+-- SHOW GRANTS FOR dan;
+
+
+
 -- Granting Privileges
 
 -- 1: web/desktop application
-CREATE USER moon_app IDENTIFIED BY 'moon1234';
+-- CREATE USER moon_app IDENTIFIED BY 'moon1234';
 
-GRANT SELECT, INSERT, UPDATE, DELETE, EXECUTE
-ON sql_store.*
-TO moon_app; -- give '@' a value if needed
+-- GRANT SELECT, INSERT, UPDATE, DELETE, EXECUTE
+-- ON sql_store.*
+-- TO moon_app; -- give '@' a value if needed
 
--- 2: admin
-GRANT ALL
-ON *.* -- all tables in all databases
-TO dan;
+-- -- 2: admin
+-- GRANT ALL
+-- ON *.* -- all tables in all databases
+-- TO dan;
 
 
 
