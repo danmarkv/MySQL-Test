@@ -1,6 +1,22 @@
+-- Granting Privileges
+
+-- 1: web/desktop application
+CREATE USER moon_app IDENTIFIED BY 'moon1234';
+
+GRANT SELECT, INSERT, UPDATE, DELETE, EXECUTE
+ON sql_store.*
+TO moon_app; -- give '@' a value if needed
+
+-- 2: admin
+GRANT ALL
+ON *.* -- all tables in all databases
+TO dan;
+
+
+
 -- Changing Passwords
-SET PASSWORD = '12345'; -- changing your own/root password
-SET PASSWORD FOR dan = '12345'; -- to change the password of a user
+-- SET PASSWORD = '12345'; -- changing your own/root password
+-- SET PASSWORD FOR dan = '12345'; -- to change the password of a user
 
 
 
