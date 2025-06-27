@@ -1,3 +1,21 @@
+-- Viewing Users
+SELECT * FROM mysql.user;
+
+
+
+-- Creating a User for Securing Databases
+
+-- CREATE USER dan IDENTIFIED BY '1234';
+
+-- CREATE USER dan@'%.codewithmosh.com' -- so that dan can connect at any domain/subdomain of codewithmosh.com
+-- CREATE USER dan@localhost
+-- CREATE USER dan@127.0.0.1 
+
+
+
+-- -------------------------------------------------------------------------------------------------------------------
+
+
 -- Performance Best Practices
 -- read thoroughly and practice to get the grasp of doing proper querying
 
