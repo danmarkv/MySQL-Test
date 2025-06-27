@@ -1,3 +1,8 @@
+-- Performance Best Practices
+-- read thoroughly and practice to get the grasp of doing proper querying
+
+
+
 -- Index Maintenance
 -- watch out for Duplicate Indexes and Redundant Indexes. if you see one of these, drop them
 -- before creating new indexes, check the existing ones and see if there is one you can extend
@@ -7,9 +12,9 @@
 -- Covering Indexes
 -- an index that covers everything that a query needs
 
-EXPLAIN SELECT customer_id, state FROM customers 
-ORDER BY state;
-SHOW STATUS LIKE 'last_query_cost';
+-- EXPLAIN SELECT customer_id, state FROM customers 
+-- ORDER BY state;
+-- SHOW STATUS LIKE 'last_query_cost';
 
 
 
