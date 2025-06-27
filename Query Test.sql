@@ -1,5 +1,17 @@
+-- Changing Passwords
+SET PASSWORD = '12345'; -- changing your own/root password
+SET PASSWORD FOR dan = '12345'; -- to change the password of a user
+
+
+
+-- Dropping Users
+-- CREATE USER bob@codewithmosh.com IDENTIFIED BY '1234';
+-- DROP USER bob@codewithmosh.com;
+
+
+
 -- Viewing Users
-SELECT * FROM mysql.user;
+-- SELECT * FROM mysql.user;
 
 
 
